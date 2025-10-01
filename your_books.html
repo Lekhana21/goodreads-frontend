@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Good Reads!</h1>
+
+    <!-- Search & Filter Section -->
+    <div id="searchSection">
+        <input type="text" id="searchInput" placeholder="Enter book name">
+        <button id="searchBtn">Search</button>
+        <label for="genreFilter">Filter by Genre:</label>
+        <select id="genreFilter">
+            <option value="">All</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Programming">Programming</option>
+            <option value="History">History</option>
+            <option value="Self-Help">Self-Help</option>
+            <option value="Horror">Horror</option>
+        </select>
+    </div>
+
+    <!-- Results Grid -->
+    <div id="resultsGrid"><!-- big container containing small containers e.g., shelves --></div>
+
+    <!-- Book Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalAuthor"></p>
+            <p id="modalGenre"></p>
+            <p id="modalRating"></p>
+            <p id="modalDescription"></p>
+            <img id="modalImage" src="" alt="Book Image">
+        </div>
+    </div>
+
+    <!-- Add New Book Form -->
+    <h2>Add New Book</h2>
+    <form id="addBookForm">
+        <label for="newTitle">Title</label>
+        <input type="text" id="newTitle" placeholder="Title" required>
+
+        <label for="newAuthor">Author</label>
+        <input type="text" id="newAuthor" placeholder="Author" required>
+
+        <label for="newGenre">Select Your Genre</label>
+        <select id="newGenre" required>
+            <option value="">Select Your Genre</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Programming">Programming</option>
+            <option value="History">History</option>
+            <option value="Self-Help">Self-Help</option>
+            <option value="Horror">Horror</option>
+        </select>
+
+        <label for="newRating">Select Rating</label>
+        <select id="newRating" required>
+            <option value="">Select Rating</option>
+            <option value="★★★★★">★★★★★</option>
+            <option value="★★★★☆">★★★★☆</option>
+            <option value="★★★☆☆">★★★☆☆</option>
+            <option value="★★☆☆☆">★★☆☆☆</option>
+            <option value="★☆☆☆☆">★☆☆☆☆</option>
+        </select>
+
+        <label for="newDescription">Description</label>
+        <input type="text" id="newDescription" placeholder="Description">
+
+        <label for="newImage">Book Cover</label>
+        <input type="file" id="newImage" accept="image/*">
+
+        <button type="submit">Add Book</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
