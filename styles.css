@@ -1,0 +1,182 @@
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 20px;
+    text-align:center;
+}
+
+input,button{
+    padding:8px;
+    margin:10px;
+}
+#resultsGrid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+    gap: 30px; /*space between two cards*/
+   justify-content:center;
+    margin-top: 20px; /*space above the grid*/
+}
+.book-card {
+    border: 1px solid #151414;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow:hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    max-width:320px;
+    margin:auto;
+}
+
+.book-card:hover{
+    transform:translate(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);;
+}
+.book-card img{
+    width:100%;
+    max-height:300px;
+    
+    
+    
+    border-bottom: 1px solid #ccc
+}
+.book-card h3 {
+    margin: 10px 0 5px 0;
+}
+.book-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+input[type="text"]{
+    width:250px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+    
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    background-color: #007bff;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor:pointer;
+    transition: background-color 0.3s;
+}
+button:hover{
+    background-color: #0056b3;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index: 1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content{
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius:8px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content img{
+    width:80%;
+    margin-top: 10px;
+}
+.close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight:bold;
+    cursor:pointer;
+}
+body {
+    background-color: #f0f0f0; /* light gray, change as you like */
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#addBookForm {
+    max-width: 350px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 18px 20px;
+    border-radius: 8px;
+    border: 2px solid #333;
+   
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* tighter spacing */
+}
+
+#addBookForm label {
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+#addBookForm input,
+#addBookForm select,
+#addBookForm textarea {
+    padding: 6px 8px;   /* smaller padding */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 13px;    /* smaller text */
+    line-height: 1.2;   /* compact height */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#addBookForm textarea {
+    resize: vertical;
+    min-height: 50px; /* smaller height */
+}
+
+#addBookForm button {
+    padding: 8px 12px;  /* compact button */
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    background-color: #1a73e8;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#addBookForm button:hover {
+    background-color: #155ab6;
+}
+
+
+
+@media(max-width:480px){
+    input[type="text"]{
+        width:80%;
+    }
+    button{
+        width:80%;
+        margin: 10px 0 0 0;
+    }
+
+    #resultGrid {
+        grid-template-columns: repeat(auto-fit,minmax(140px, 1fr));
+        gap:15px;
+    }
+}
