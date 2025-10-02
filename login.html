@@ -14,7 +14,6 @@
     </form>
 
     <script>
-        // Railway backend URL
         const BASE_URL = "https://shortline-production-railway.up.railway.app";
 
         document.getElementById("loginForm").addEventListener("submit", async (e) => {
@@ -24,7 +23,7 @@
             const password = document.getElementById("loginPassword").value;
 
             try {
-                const response = await fetch(`${BASE_URL}/api/login`, {
+                const response = await fetch(`${BASE_URL}/api/users/login`, { // correct URL
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })
