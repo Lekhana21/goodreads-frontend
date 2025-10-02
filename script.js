@@ -1,4 +1,5 @@
-const BASE_URL = "https://shortline-production-railway.up.railway.app"; // Railway backend URL
+const BASE_URL = "https://goodreads-backend-production.up.railway.app"; // new live backend URL
+
 const resultsGrid = document.getElementById("resultsGrid");
 const searchInput = document.getElementById("searchInput");
 const genreFilter = document.getElementById("genreFilter");
