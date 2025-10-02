@@ -1,3 +1,4 @@
+const BASE_URL = "https://shortline-production-railway.up.railway.app"; // Railway backend URL
 const resultsGrid = document.getElementById("resultsGrid");
 const searchInput = document.getElementById("searchInput");
 const genreFilter = document.getElementById("genreFilter");
@@ -6,13 +7,11 @@ let books = [];
 
 // Fetch books from backend
 function fetchAllBooks() {
-    fetch("http://localhost:8080/api/books")
+    fetch(`${BASE_URL}/api/books`)
         .then(response => response.json())
         .then(data => {
-            
-                books = data;
-            
-                displayBooks(books);
+            books = data;
+            displayBooks(books);
         })
         .catch(err => console.error("Error fetching books:", err));
 }
@@ -54,17 +53,15 @@ function displayBooks(bookList) {
             document.getElementById("modalDescription").textContent = book.description || "No description available.";
             document.getElementById("modalImage").src = book.image;
             document.getElementById("bookModal").style.display = "block";
-
           }
-            
         });
-        //delete button
-        card.querySelector(".delete-btn").addEventListener("click",()=>{
-          fetch(`http://localhost:8080/api/books/${book.id}`, { method: "DELETE" })
+
+        // Delete button
+        card.querySelector(".delete-btn").addEventListener("click", () => {
+          fetch(`${BASE_URL}/api/books/${book.id}`, { method: "DELETE" })
                 .then(res => {
                     if (res.ok) {
                         console.log("Book deleted:", book.title);
-                        // remove from local array
                         books = books.filter(b => b.id !== book.id);
                         displayBooks(books);
                     } else {
@@ -73,6 +70,7 @@ function displayBooks(bookList) {
                 })
                 .catch(err => console.error("Error deleting book:", err));
         });
+
         resultsGrid.appendChild(card);
     });
 }
@@ -127,7 +125,7 @@ addBookForm.addEventListener("submit", (e) => {
         addBookForm.reset();
 
         // Send to backend
-        fetch("http://localhost:8080/api/books", {
+        fetch(`${BASE_URL}/api/books`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newBook)

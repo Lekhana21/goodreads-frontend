@@ -6,7 +6,6 @@
 <title>Register</title>
 
 <style>
-  /* Full-page background image */
   body {
     margin: 0;
     padding: 0;
@@ -15,13 +14,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://images.unsplash.com/photo-1560185127-6f245f8d1b2e?auto=format&fit=crop&w=1470&q=80'); /* UK-themed image */
+    background-image: url('https://images.unsplash.com/photo-1560185127-6f245f8d1b2e?auto=format&fit=crop&w=1470&q=80');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
   }
 
-  /* Overlay for better readability */
+  /* Overlay */
   body::before {
     content: "";
     position: absolute;
@@ -31,7 +31,7 @@
     z-index: 0;
   }
 
-  /* Centered form */
+  /* Form styling */
   form {
     position: relative;
     z-index: 1;
@@ -73,7 +73,6 @@
     background-color: #155ab6;
   }
 
-  /* Responsive design */
   @media (max-width: 400px) {
     form {
       width: 90%;
@@ -84,8 +83,8 @@
 </head>
 <body>
 
-<h2>Register</h2>
 <form id="registerForm">
+  <h2>Register</h2>
   <input type="text" id="username" placeholder="Username" required>
   <input type="email" id="email" placeholder="Email" required>
   <input type="password" id="password" placeholder="Password" required>
@@ -93,6 +92,8 @@
 </form>
 
 <script>
+const BASE_URL = "https://shortline-production-railway.up.railway.app"; // your Railway backend URL
+
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -100,18 +101,23 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const response = await fetch("http://localhost:8080/api/users/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, email, password })
-  });
+  try {
+    const response = await fetch(`${BASE_URL}/api/users/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, email, password })
+    });
 
-  if (response.ok) {
-    alert("Registration Successful! Please Login.");
-    window.location.href = "login.html";
-  } else {
-    const err = await response.text();
-    alert("Registration Failed: " + err);
+    if (response.ok) {
+      alert("Registration Successful! Please Login.");
+      window.location.href = "login.html";
+    } else {
+      const err = await response.text();
+      alert("Registration Failed: " + err);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("An error occurred while registering.");
   }
 });
 </script>
